@@ -1,7 +1,7 @@
 import boto3
 from botocore.config import Config
 ec2 = boto3.client('ec2')
-response = ec2.describe_instances()
+#response = ec2.describe_instances()
 #print(response)
 #print(type(response))
 #print(response.keys())
@@ -9,27 +9,27 @@ lijstvanelasticaddresses=[]
 lijstvanregios=[]
 lijstvanregios2=[]
 truelijstvanregios=[]
-response2= ec2.describe_regions()
-regionsresponse=(response2['Regions'])
-for x in regionsresponse:
-    lijstvanregios.append(x['RegionName'])
+#response2= ec2.describe_regions()
+#regionsresponse=(response2['Regions'])
+#for x in regionsresponse:
+#    lijstvanregios.append(x['RegionName'])
 
 
-trueallregions=ec2.describe_regions(AllRegions=True)
-trueregionsresponse=(trueallregions['Regions'])
-for x in trueregionsresponse:
-    truelijstvanregios.append(x['RegionName'])
+#trueallregions=ec2.describe_regions(AllRegions=True)
+#trueregionsresponse=(trueallregions['Regions'])
+#for x in trueregionsresponse:
+#    truelijstvanregios.append(x['RegionName'])
 #rint(len(truelijstvanregios))
 
-with open("amazon regions.txt", "r") as f:
-    mylist = f.read().splitlines()
-def alleregios():
-    lijstvanregios2 = []
-    response2 = ec2.describe_regions()
-    regionsresponse = (response2['Regions'])
-    for x in regionsresponse:
-        lijstvanregios2.append(x['RegionName'])
-    return lijstvanregios2
+#with open("amazon regions.txt", "r") as f:
+#    mylist = f.read().splitlines()
+#def alleregios():
+#    lijstvanregios2 = []
+#    response2 = ec2.describe_regions()
+#    regionsresponse = (response2['Regions'])
+#    for x in regionsresponse:
+#        lijstvanregios2.append(x['RegionName'])
+#    return lijstvanregios2
 
 
 #print(alleregios())
@@ -90,24 +90,6 @@ def alleinstances(regios):
             print(id,instancetype,status)
 
             #print(counter)
-
-#alleinstances(lijstvanregios)
-regios=['us-west-1','us-west-2','eu-west-2', 'eu-west-1']
-#alleinstances(regios)
-#ec2 = boto3.client('ec2', 'us-west-1')
-ec2 = boto3.client('ec2', 'eu-west-1')
-response = ec2.describe_instances()
-#print(response['Reservations'][0]['Instances'][0]['State']['Name'])
-#print(response['Reservations'][0]['Instances'].keys())
-#print(response['Reservations'][0]['Instances'][0].keys())
-#print(response['Reservations'][0]['Instances'][0]['NetworkInterfaces'][0]['NetworkInterfaceId'])
-elresponse=ec2.describe_addresses()
-
-#print(len(elresponse["Addresses"]))
-#de logica is dat als de lengte kleiner is dan 10 is hij op niks toegepast bij een len van 10 is hij toegepast
-#print(len(elresponse["Addresses"][1]))
-netwerkinformatie= ec2.describe_vpcs()
-#print(netwerkinformatie['Vpcs'])
 
 
 def listalleinstances(regios):
@@ -220,19 +202,6 @@ def customkeylistalleinstances(regios,ACCESS_KEY,SECRET_KEY):
             #print(counter)
     return instanceinformationlist
 
-#print(securitygroups(alleregios(),'AKIAREG27JVKSBWTSQGL','nr9vE8EuRU5ku4Wi3IQThHS83GiNDH+NODnC72Pe'))
-ec2 = boto3.client('ec2')
-securityinformation=ec2.describe_security_groups()
-#print(securityinformation)
-#print(securityinformation['SecurityGroups'][0].keys())
-#print(securityinformation['SecurityGroups'][0]['IpPermissions'])
-
-#print(type(securityinformation['SecurityGroups'][2]['IpPermissions'][0]['IpProtocol']))
-#print(securityinformation['SecurityGroups'][4]['IpPermissions'][0]['IpRanges'][0]['CidrIp'])
-
-#print(len(securityinformation['SecurityGroups'][0]['IpPermissions'][0]['IpRanges']))
-
-#print(securityinformation['SecurityGroups'][2]['IpPermissions'][0]['IpProtocol'])
 
 def securitygroupdef(regios, ACCESS_KEY, SECRET_KEY):
     securitylist = []
@@ -310,7 +279,8 @@ def securitygroupdef(regios, ACCESS_KEY, SECRET_KEY):
         counter2+=2
     return securitylist
 
-
+acces='AKIAREG27JVKSBWTSQGL'
+password='nr9vE8EuRU5ku4Wi3IQThHS83GiNDH+NODnC72Pe'
 #lijstvoorsecurityinformatie=(securitygroupdef(alleregios(),acces,password))
 #print(lijstvoorsecurityinformatie)
 #print(listalleinstances(alleregios()))
