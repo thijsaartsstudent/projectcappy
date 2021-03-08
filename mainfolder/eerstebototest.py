@@ -310,8 +310,7 @@ def securitygroupdef(regios, ACCESS_KEY, SECRET_KEY):
         counter2+=2
     return securitylist
 
-acces='AKIAREG27JVKSBWTSQGL'
-password='nr9vE8EuRU5ku4Wi3IQThHS83GiNDH+NODnC72Pe'
+
 #lijstvoorsecurityinformatie=(securitygroupdef(alleregios(),acces,password))
 #print(lijstvoorsecurityinformatie)
 #print(listalleinstances(alleregios()))
