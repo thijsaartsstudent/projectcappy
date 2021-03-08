@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static',     filename='css/styleloading.css') }}">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/jquery-1.2.6.min.js') }}"></script>
+</head>
+<body>
+
+<div id="loading">
+        <div id="txtloading">
+    <p>this script is working. it kan take a few minutes</p>
+    <img src="/static/Gear-0.2s-215px.gif">
+        </div>
+</div>
+<div id="content">
+
+
+<form method="POST">
+    <input type="checkbox" name="regiocheckbox" id="us-east-1" value="us-east-1" >
+    <label for="us-east-1"> us-east-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="us-east-2" value="us-east-2" >
+    <label for="us-east-2"> us-east-2</label><br>
+    <input type="checkbox" name="regiocheckbox" id="us-west-1" value="us-west-1" >
+    <label for="us-west-1"> us-west-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="us-west-2" value="us-west-2" >
+    <label for="us-west-2"> us-west-2</label><br>
+    <input type="checkbox" name="regiocheckbox" id="af-south-1" value="af-south-1" >
+    <label for="af-south-1">af-south-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-east-1" value="ap-east-1" >
+    <label for="ap-east-1"> ap-east-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-south-1" value="ap-south-1" >
+    <label for="ap-south-1">ap-south-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-northeast-1" value="ap-northeast-1" >
+    <label for="ap-northeast-1"> ap-northeast-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-northeast-2" value="ap-northeast-2" >
+    <label for="ap-northeast-2"> ap-northeast-2</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-southeast-1" value="ap-southeast-1" >
+    <label for="ap-southeast-1"> ap-southeast-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ap-southeast-2" value="ap-southeast-2" >
+    <label for="ap-southeast-2"> ap-southeast-2</label><br>
+    <input type="checkbox" name="regiocheckbox" id="ca-central-1" value="ca-central-1" >
+    <label for="ca-central-1">ca-central-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-central-1" value="eu-central-1" >
+    <label for="eu-central-1">eu-central-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-west-1" value="eu-west-1" >
+    <label for="eu-west-1"> eu-west-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-west-2" value="eu-west-2" >
+    <label for="eu-west-2"> eu-west-2</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-west-3" value="eu-west-3" >
+    <label for="eu-west-3"> eu-west-3</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-south-1" value="eu-south-1" >
+    <label for="eu-south-1"> eu-south-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="eu-north-1" value="eu-north-1" >
+    <label for="eu-north-1"> eu-north-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="me-south-1" value="me-south-1" >
+    <label for="me-south-1"> me-south-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="sa-east-1" value="sa-east-1" >
+    <label for="sa-east-1"> sa-east-1</label><br>
+    <input type="checkbox" name="regiocheckbox" id="all" value="all" checked>
+    <label for="all"> all</label><br>
+    <input name="acceskey" id="acceskey" value="acceskey">
+    <label for="acceskey"> Access key ID</label><br>
+    <input name="accesspw" id="accesspw" value="accesspw">
+    <label for="accesspw"> Secret access key</label><br>
+    <input type="submit" id="submit" value="submit" onclick="loading();">
+
+</form>
+
+</div>
+</body>
+
+
+
+
+</html>

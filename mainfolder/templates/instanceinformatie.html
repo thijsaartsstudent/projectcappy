@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>For loop in Flask</title>
+</head>
+<script>
+    function myFunction1() {
+        // Get the checkbox
+        var maincheckBox = document.getElementById("optionview");
+        var ipcheckBox = document.getElementById("ipview");
+        // Get the output text
+        var text1 = document.getElementById("mainstyle");
+        var text2 = document.getElementById("iptable");
+        // If the checkbox is checked, display the output text
+        text1.style.display = "block";
+        text2.style.display = "none";
+    }
+    function myFunction2() {
+  // Get the checkbox
+        var maincheckBox = document.getElementById("optionview");
+        var ipcheckBox = document.getElementById("ipview");
+        // Get the output text
+        var text1 = document.getElementById("mainstyle");
+        var text2 = document.getElementById("iptable");
+
+  // If the checkbox is checked, display the output text
+  text1.style.display = "none";
+  text2.style.display = "block";
+}
+</script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <div id="options">
+        <p>view mode</p>
+          <input type="radio" id="full view" name="optionview" value="full view" onclick="myFunction1()" checked>
+          <label for="full view">full view</label><br>
+          <input type="radio" id="ipview" name="optionview" value="ipview" onclick="myFunction2()">
+          <label for="ipview">ipview</label><br>
+    </div>
+    <div id="mainstyle">
+        <ul style="list-style-type:none">
+        {% for regio in devvoorinstanceinformatie %}
+          <li class="region">{{regio}}</li>
+            {% if not devvoorinstanceinformatie[regio]['elasticip'] %}
+               {%print(skip)%}
+            {% else %}
+                <li class="group">elastic ip</li>
+            {% endif %}
+            {% for elastic in devvoorinstanceinformatie[regio]['elasticip'] %}
+                <li class="elastic">{{devvoorinstanceinformatie[regio]['elasticip'][elastic]['information']}}</li>
+            {% endfor %}
+
+            {% if not devvoorinstanceinformatie[regio]['gatewayid'] %}
+               {%print(skip)%}
+            {% else %}
+                <li class="group">gateway</li>
+            {% endif %}
+            {% for gateway in devvoorinstanceinformatie[regio]['gatewayid'] %}
+                    <li class="gateway">{{devvoorinstanceinformatie[regio]['gatewayid'][gateway]['information']}}</li>
+            {% endfor %}
+
+            {% for vpcs in devvoorinstanceinformatie[regio]['vpc'] %}
+                    <li class="vpc">{{devvoorinstanceinformatie[regio]['vpc'][vpcs]['address']}}</li>
+                        {% if devvoorinstanceinformatie[regio]['vpc'][vpcs]|length ==1 %}
+                            <li class="emptyvpc">this VPC is empty</li>
+                        {% endif %}
+                        {% if not devvoorinstanceinformatie[regio]['elasticip'] %}
+                            {%print(skip)%}
+                        {% else %}
+                            <li class="instances">instances</li>
+                        {% endif %}
+                    	{% for instance in devvoorinstanceinformatie[regio]['vpc'][vpcs] if not instance=='address' %}
+
+                            {% if instance=='address' %}
+				                {%print(skip)%}
+                            {% else %}
+
+				                <li class="instanceinformation1">{{instance}} </li>
+				                <li class="instanceinformation2">{{devvoorinstanceinformatie[regio]['vpc'][vpcs][instance]['instancetype']}} </li>
+				                <li class="instanceinformation3">{{devvoorinstanceinformatie[regio]['vpc'][vpcs][instance]['status']}} </li>
+			                {% endif %}
+                        {% endfor %}
+            {% endfor %}
+       {% endfor %}
+        </ul>
+        </div>
+        <div id="iptable" style="display: none;">
+            <table>
+              <tr>
+                <th>instanceid</th>
+                <th>private ip</th>
+                <th>public ip</th>
+                <th>regio</th>
+              </tr>
+            {% for regio in devvoorinstanceinformatie %}
+
+            {% for vpcs in devvoorinstanceinformatie[regio]['vpc'] %}
+
+                    	{% for instance in devvoorinstanceinformatie[regio]['vpc'][vpcs] if not instance=='address' %}
+
+                            {% if instance=='address' %}
+				                {%print(skip)%}
+                            {% else %}
+                                <tr>
+                                    <th>{{instance}}</th>
+                                    <th>{{devvoorinstanceinformatie[regio]['vpc'][vpcs][instance]['publicaddress']}}</th>
+                                    <th>{{devvoorinstanceinformatie[regio]['vpc'][vpcs][instance]['privateaddress']}}</th>
+                                    <th>{{regio}}</th>
+                                </tr>
+
+			                {% endif %}
+                        {% endfor %}
+            {% endfor %}
+       {% endfor %}
+
+            </table>
+        </div>
+
+    {% endblock %}
+
+
+  </body>
+
+</html>

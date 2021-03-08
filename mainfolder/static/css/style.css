@@ -1,0 +1,72 @@
+h1 {
+    border: 2px #eee solid;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+}
+
+li.region{
+    border: 2px #eee solid;
+    color: brown;
+    text-align: left;
+    padding: 10px;
+    font-size: 36px;}
+
+li.secgroup{
+    font-size: 24px;
+}
+
+li.group {
+    font-size: 24px;
+}
+
+li.infomation{}
+
+li.vpc {
+    font-size: 24px;
+}
+
+li.instances{
+    font-size: 20px;
+}
+
+li.instanceinformation1
+
+{
+    font-size: 18px;
+}
+#page {
+    display: none;
+}
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("http://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+div.iptable{
+    display: none;
+}

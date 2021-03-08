@@ -1,0 +1,19 @@
+div#loading {
+
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+
+    width: 400px;
+    height: 200px;
+    display: none;
+    #background: url(/static/Gear-0.2s-215px.gif) no-repeat;
+    cursor: wait;
+    }
+div#txtloading{
+    padding-left: 50px;
+}
+img {
+  padding-left: 50px;
+}
+

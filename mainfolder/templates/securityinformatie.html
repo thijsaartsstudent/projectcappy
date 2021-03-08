@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>For loop in Flask</title>
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+        <ul style="list-style-type:none">
+        {% for x in range(0,lijstvoorsecurityinformatie|length,2) %}
+          <li class="region">{{lijstvoorsecurityinformatie[x]}}</li>
+            {% for y in range(0,lijstvoorsecurityinformatie[x+1]|length,2) %}
+                <li class="secgroup">{{lijstvoorsecurityinformatie[x+1][y]}}</li>
+                {% for z in range(0,lijstvoorsecurityinformatie[x+1][y+1]|length,2) %}
+                    <li class="information">{{lijstvoorsecurityinformatie[x+1][y+1][z]}}</li>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+        </ul>
+
+
+
+    {% endblock %}
+</body>
+
+</html>
