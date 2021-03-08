@@ -1,7 +1,7 @@
 import boto3
 from botocore.config import Config
-ec2 = boto3.client('ec2')
-response = ec2.describe_instances()
+#ec2 = boto3.client('ec2')
+#response = ec2.describe_instances()
 import datetime
 from dateutil.tz import tzutc
 
@@ -146,8 +146,24 @@ def customkeylistalleinstances2(regios,ACCESS_KEY,SECRET_KEY,meetperformanceon,t
             #print(counter)
     return fulldict
 lijstvanregios2=[]
-def alleregios():
+def alleregios(ACCESS_KEY,SECRET_KEY):
+    my_config = Config(
+        region_name='us-west-1',
+        signature_version='v4',
 
+        retries={
+            'max_attempts': 10,
+            'mode': 'standard'
+        }
+    )
+    cloudwatch = boto3.client('ec2',
+                              aws_access_key_id=ACCESS_KEY,
+                              aws_secret_access_key=SECRET_KEY,
+                              config=my_config)
+
+
+    lijstvanregios2 = []
+    ec2 = boto3.client('ec2')
     response2 = ec2.describe_regions()
     regionsresponse = (response2['Regions'])
     for x in regionsresponse:
@@ -155,13 +171,12 @@ def alleregios():
     return lijstvanregios2
 
 
-
 #regios=['us-west-1','us-west-2','eu-west-1','eu-west-2']
 
-ec2 = boto3.client('ec2')
-response2 = ec2.describe_instances()
-#print(response2)
-cloudwatch=  boto3.client('cloudwatch')
+#ec2 = boto3.client('ec2')
+#response2 = ec2.describe_instances()
+##print(response2)
+#cloudwatch=  boto3.client('cloudwatch')
 
 
 

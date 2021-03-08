@@ -40,6 +40,7 @@ def alleregios(ACCESS_KEY,SECRET_KEY):
 
 
     lijstvanregios2 = []
+    ec2 = boto3.client('ec2')
     response2 = ec2.describe_regions()
     regionsresponse = (response2['Regions'])
     for x in regionsresponse:
