@@ -23,13 +23,28 @@ truelijstvanregios=[]
 
 #with open("amazon regions.txt", "r") as f:
 #    mylist = f.read().splitlines()
-#def alleregios():
-#    lijstvanregios2 = []
-#    response2 = ec2.describe_regions()
-#    regionsresponse = (response2['Regions'])
-#    for x in regionsresponse:
-#        lijstvanregios2.append(x['RegionName'])
-#    return lijstvanregios2
+def alleregios(ACCESS_KEY,SECRET_KEY):
+    my_config = Config(
+        region_name='us-west-1',
+        signature_version='v4',
+
+        retries={
+            'max_attempts': 10,
+            'mode': 'standard'
+        }
+    )
+    cloudwatch = boto3.client('ec2',
+                              aws_access_key_id=ACCESS_KEY,
+                              aws_secret_access_key=SECRET_KEY,
+                              config=my_config)
+
+
+    lijstvanregios2 = []
+    response2 = ec2.describe_regions()
+    regionsresponse = (response2['Regions'])
+    for x in regionsresponse:
+        lijstvanregios2.append(x['RegionName'])
+    return lijstvanregios2
 
 
 #print(alleregios())

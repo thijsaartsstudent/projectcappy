@@ -1,11 +1,11 @@
 from flask import Flask, render_template,request
-from eerstebototest import listalleinstances,customkeylistalleinstances,alleregios,securitygroupdef,prinformation
+from eerstebototest import listalleinstances,customkeylistalleinstances,securitygroupdef,prinformation,alleregios
 from tweedebototest import customkeylistalleinstances2
 
 app = Flask(__name__)
 
 #regios=alleregios()
-regios=['us-west-1','us-west-2','eu-west-1','eu-west-2']
+regios=['us-east-1','us-east-2','us-west-1','us-west-2','af-south-1','ap-east-1','ap-south-1','ap-northeast-1','ap-northeast-2','ap-southeast-1','ap-southeast-2','ca-central-1','eu-central-1','eu-west-1','eu-west-2','eu-west-3','eu-south-1','eu-north-1','me-south-1','sa-east-1']
 lijstvoorinstanceinformatie=listalleinstances(regios)
 #dit is een test voor gitpublishing
 
@@ -49,7 +49,7 @@ def my_form_post():
 
     if 'all' in lijstvanregios:
         print('all zit in de lijst')
-        regios = alleregios()
+        regios = alleregios(text,text2)
     else:
         regios=lijstvanregios
         print(lijstvanregios)
