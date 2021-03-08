@@ -7,7 +7,7 @@ app = Flask(__name__)
 #regios=alleregios()
 regios=['us-west-1','us-west-2','eu-west-1','eu-west-2']
 lijstvoorinstanceinformatie=listalleinstances(regios)
-
+#dit is een test voor gitpublishing
 
 
 @app.route("/")
