@@ -155,8 +155,7 @@ def alleregios():
     return lijstvanregios2
 
 
-acces='AKIAREG27JVKSBWTSQGL'
-password='nr9vE8EuRU5ku4Wi3IQThHS83GiNDH+NODnC72Pe'
+
 #regios=['us-west-1','us-west-2','eu-west-1','eu-west-2']
 
 ec2 = boto3.client('ec2')
