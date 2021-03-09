@@ -2,10 +2,10 @@ from openstack import connection
 import openstack
 def test():
     conn = connection.Connection(auth_url="http://192.168.37.135/identity/v3",
-                                 project_name="admin",username='admin',
-                                 password="Hellsing52",
-                                 user_domain_id='default',
-                                 project_domain_id='default'
+                                 #project_name="admin",username='admin',
+                                 #password='',
+                                 #user_domain_id='default',
+                                 #project_domain_id='default'
                                  )
 
     print(conn)
@@ -24,10 +24,10 @@ def openstackinstances(user,password,authurl,project):
 
     for project in listvorprojects:
         conn = connection.Connection(auth_url="http://192.168.37.135/identity/v3",
-                                     project_name=project, username='admin',
-                                     password="Hellsing52",
-                                     user_domain_id='default',
-                                     project_domain_id='default'
+                                     #project_name=project, username='admin',
+                                     #password="Hellsing52",
+                                     #user_domain_id='default',
+                                     #project_domain_id='default'
                                      )
         print(project)
         for server in conn.compute.servers():
