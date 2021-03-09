@@ -1,7 +1,7 @@
 from openstack import connection
 import openstack
 def test():
-    conn = connection.Connection(auth_url="http://192.168.37.135/identity/v3",
+    conn = connection.Connection(auth_url="",
                                  #project_name="admin",username='admin',
                                  #password='',
                                  #user_domain_id='default',
@@ -23,9 +23,9 @@ def openstackinstances(user,password,authurl,project):
     listvorprojects=['admin']
 
     for project in listvorprojects:
-        conn = connection.Connection(auth_url="http://192.168.37.135/identity/v3",
+        conn = connection.Connection(auth_url="",
                                      #project_name=project, username='admin',
-                                     #password="Hellsing52",
+                                     #password="",
                                      #user_domain_id='default',
                                      #project_domain_id='default'
                                      )
